@@ -1,0 +1,19 @@
+pipeline{
+agent any
+environment{
+    DOCKERTAG = getdockertag() 
+}
+stages{
+    stage{
+        steps("build docker image"){
+            sh "docker build . -t demo/image:${DOCKERTAG}"
+        }
+    }
+
+}
+
+}
+def getdockertag(){
+    def newtag = sh script: 'git rev-parse HEAD' , returnestdout: true
+    return newtag
+}
