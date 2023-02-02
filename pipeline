@@ -6,7 +6,7 @@ environment{
 stages{
     stage('docker build image'){
         steps{
-            sh "docker build . -t demo/image:${DOCKERTAG}"
+            sh "sudo docker build -t demo/image:${DOCKERTAG} ."
         }
     }
     stage('docker image push '){
