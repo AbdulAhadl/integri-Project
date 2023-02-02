@@ -4,8 +4,8 @@ environment{
     DOCKERTAG = getdockertag() 
 }
 stages{
-    stage{
-        steps("build docker image"){
+    stage('docker build image'){
+        steps{
             sh "docker build . -t demo/image:${DOCKERTAG}"
         }
     }
