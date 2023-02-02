@@ -9,6 +9,14 @@ stages{
             sh "docker build . -t demo/image:${DOCKERTAG}"
         }
     }
+    stage('docker image push '){
+        steps{
+            withCredentials([string(credentialsId: 'ahadwaqar', variable: 'dockerhubpwd')]) {
+                sh "docker login -u ahadwaqar -p ${dockerhubpwd}"
+                sh "docker push demo/image:${DOCKERTAG}"
+            }
+        }
+    }
 
 }
 
