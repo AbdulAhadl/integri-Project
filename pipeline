@@ -14,6 +14,6 @@ stages{
 
 }
 def getdockertag(){
-    def newtag = sh script: 'git rev-parse HEAD' , returnestdout: true
+    def newtag = sh script: 'git rev-parse HEAD' , returnStdout: true
     return newtag
 }
